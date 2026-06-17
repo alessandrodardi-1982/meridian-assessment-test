@@ -899,6 +899,89 @@
 
   .footer-link:hover { opacity: 1; }
 
+  /* ── BANNER DEMO ── */
+  .banner-demo {
+    background: rgba(245,158,11,0.08);
+    border: 1px solid rgba(245,158,11,0.25);
+    border-left: 3px solid var(--amber);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.82rem;
+    color: var(--amber);
+    line-height: 1.5;
+  }
+
+  .banner-demo-icon {
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .banner-demo span {
+    color: var(--text-muted);
+  }
+
+  .banner-demo strong {
+    color: var(--amber);
+  }
+
+  /* ── STORIA PROGETTO ── */
+  .storia-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem var(--section-gap);
+  }
+
+  .storia-intro {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 680px;
+  }
+
+  .storia-intro strong {
+    color: var(--text);
+  }
+
+  .storia-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .storia-card {
+    background: var(--navy-card);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .storia-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  .storia-card-text {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .storia-card-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 680px) {
     nav { padding: 0 1rem; }
@@ -914,6 +997,8 @@
     .governance-grid { grid-template-columns: 1fr; }
     .cover-meta { gap: 1.5rem; }
     .cover-score-block { flex-direction: column; text-align: center; gap: 0.75rem; }
+    .storia-cards { grid-template-columns: 1fr; }
+    .storia-wrap { padding: 0 1.25rem var(--section-gap); }
   }
 </style>
 </head>
@@ -932,6 +1017,12 @@
   </ul>
   <button class="btn-print" onclick="window.print()">Salva PDF</button>
 </nav>
+
+<!-- BANNER DEMO -->
+<div class="banner-demo">
+  <span class="banner-demo-icon">⚠</span>
+  <div><strong>Caso dimostrativo.</strong> <span>Meridian Industries Srl è un'azienda fittizia costruita su pattern reali di PMI manifatturiere italiane. Tutti i dati, le valutazioni e i numeri sono simulati a scopo illustrativo. L'obiettivo è mostrare come si struttura un assessment AI reale, non rappresentare un cliente specifico.</span></div>
+</div>
 
 <!-- COVER -->
 <div class="cover">
@@ -966,6 +1057,38 @@
       <strong>AI Ready: Fase Iniziale</strong>
       Maturità sufficiente per avviare un percorso strutturato.<br>
       Il rischio principale non è tecnologico — è organizzativo.
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- STORIA DEL PROGETTO -->
+<div class="storia-wrap" style="padding-top: var(--section-gap);">
+  <div class="section-header">
+    <span class="section-num">00 / Origine del progetto</span>
+    <h2 class="section-title">Perché questo documento esiste</h2>
+  </div>
+
+  <p class="storia-intro">
+    Nel mio lavoro come Service Manager ho coordinato tecnici, gestito fornitori e tenuto sotto controllo centinaia di interventi aperti contemporaneamente. <strong>Gli strumenti c'erano — Excel, CRM, ERP — ma nessuno li leggeva in modo intelligente.</strong> Le decisioni importanti si prendevano a intuito, su dati dispersi, spesso in ritardo.
+  </p>
+  <p class="storia-intro">
+    Questo assessment nasce da quella esperienza. Ho costruito il caso Meridian Industries per dimostrare come si affronta una trasformazione AI in una PMI industriale italiana: non partendo dalla tecnologia, ma dai problemi reali dell'operativo. <strong>Prima si capisce dove si è. Poi si decide dove andare. Solo alla fine si sceglie lo strumento.</strong>
+  </p>
+
+  <div class="storia-cards">
+    <div class="storia-card">
+      <span class="storia-card-label">Il problema che conosco</span>
+      <p class="storia-card-text">Dati frammentati, processi persona-dipendenti, nessuna visibilità predittiva. <strong>È la realtà di molte PMI italiane con cui ho lavorato.</strong> Non mancano le informazioni — mancano gli strumenti per leggerle.</p>
+    </div>
+    <div class="storia-card">
+      <span class="storia-card-label">L'approccio che propongo</span>
+      <p class="storia-card-text">Assessment della maturità attuale, mappa dei casi d'uso prioritari, roadmap per fasi con ROI stimato, framework di governance. <strong>Una struttura replicabile su qualsiasi cliente industriale.</strong></p>
+    </div>
+    <div class="storia-card">
+      <span class="storia-card-label">Il collegamento con il portfolio</span>
+      <p class="storia-card-text">I prototipi funzionanti per UC1 (triage assistenza) e UC2 (manutenzione predittiva) <strong>esistono già nel portfolio</strong> — costruiti con le stesse tecnologie che propongo qui. La strategia e gli strumenti si confermano a vicenda.</p>
     </div>
   </div>
 </div>
@@ -1119,7 +1242,7 @@
         <td>
           <span class="uc-name">Triage automatico richieste assistenza</span>
           <span class="uc-desc">Classificazione e instradamento delle richieste cliente in base al tipo di guasto e urgenza. Riduce il lavoro manuale del responsabile e accelera i tempi di risposta.</span>
-          <a href="https://alessandro-dardi.netlify.app" class="portfolio-link" target="_blank">↗ Prototipo in portfolio (A4)</a>
+          <a href="https://alessandro-dardi.netlify.app/agente_supporto.html" class="portfolio-link" target="_blank">↗ Prototipo in portfolio (A4)</a>
         </td>
         <td class="uc-score" style="color:var(--accent)">4/5</td>
         <td class="uc-score">2/5</td>
@@ -1130,7 +1253,7 @@
         <td>
           <span class="uc-name">Manutenzione predittiva</span>
           <span class="uc-desc">Analisi dello storico interventi per anticipare guasti ricorrenti su specifici macchinari. Il use case più differenziante, ma richiede dati strutturati come prerequisito.</span>
-          <a href="https://alessandro-dardi.netlify.app" class="portfolio-link" target="_blank">↗ Prototipo in portfolio (A5)</a>
+          <a href="https://alessandro-dardi.netlify.app/dashboard_manutenzione_predittiva.html" class="portfolio-link" target="_blank">↗ Prototipo in portfolio (A5)</a>
         </td>
         <td class="uc-score" style="color:var(--accent)">5/5</td>
         <td class="uc-score">4/5</td>
@@ -1230,9 +1353,9 @@
         <span class="phase-period">Mesi 1 – 3</span>
       </div>
       <ul class="phase-items">
-        <li>Attivare UC3: report operativo automatico (n8n + Claude API)</li>
-        <li>Attivare UC1: triage richieste con ticket strutturato</li>
-        <li>Consolidare i dati esistenti in un unico foglio strutturato</li>
+        <li>Report operativo settimanale generato automaticamente da n8n e Claude API — zero intervento manuale</li>
+        <li>Triage delle richieste cliente con classificazione AI e ticket strutturato per il responsabile</li>
+        <li>Consolidamento dei dati esistenti in un unico foglio strutturato — base per tutto il resto</li>
       </ul>
       <div class="phase-roi">
         <strong>ROI stimato</strong>
@@ -1247,10 +1370,10 @@
         <span class="phase-period">Mesi 4 – 9</span>
       </div>
       <ul class="phase-items">
-        <li>Attivare UC4: monitoring fornitori con alert anomalie</li>
-        <li>Attivare UC5: supporto pianificazione tecnici</li>
-        <li>Introdurre un layer dati strutturato (Google Sheets o Airtable)</li>
-        <li>Formare il Responsabile Operativo sugli strumenti AI adottati</li>
+        <li>Monitoring automatico fornitori con alert su anomalie di prezzo, ritardi e rotture di stock</li>
+        <li>Supporto AI alla pianificazione tecnici: zona, specializzazione, carico di lavoro</li>
+        <li>Introdurre un layer dati strutturato (Google Sheets o Airtable) condiviso tra i team</li>
+        <li>Formare il Responsabile Operativo sugli strumenti AI adottati nelle fasi precedenti</li>
       </ul>
       <div class="phase-roi">
         <strong>ROI stimato</strong>
@@ -1265,9 +1388,9 @@
         <span class="phase-period">Mesi 10 – 18</span>
       </div>
       <ul class="phase-items">
-        <li>Attivare UC2: manutenzione predittiva su storico consolidato</li>
+        <li>Manutenzione predittiva attiva sullo storico interventi consolidato nelle fasi precedenti</li>
         <li>Dashboard executive con KPI real-time per la direzione</li>
-        <li>Governance AI formale: policy, audit periodico, ruoli</li>
+        <li>Governance AI formale: policy d'uso, audit periodico, ruoli e responsabilità definite</li>
       </ul>
       <div class="phase-roi">
         <strong>ROI stimato</strong>
@@ -1369,8 +1492,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-note">
-    Scenario fittizio costruito su pattern reali di PMI manifatturiere italiane.<br>
-    Preparato da <strong>Alessandro Dardi</strong> — Operations & Digital Transformation
+    Preparato da <strong>Alessandro Dardi</strong> — Operations & Digital Transformation<br>
+    <span style="color:var(--text-dim)">Service Manager con 8 anni di esperienza nell'industria — ora al crocevia tra operativo e digitale.</span>
   </div>
   <a href="https://alessandro-dardi.netlify.app" class="footer-link" target="_blank">← Torna al portfolio</a>
 </footer>
