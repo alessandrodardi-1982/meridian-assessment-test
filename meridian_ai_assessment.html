@@ -214,15 +214,15 @@
 
   /* ── USE CASE MAP ── */
   .uc-chart-wrap{background:var(--navy-card);border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin-bottom:2rem;}
-  .uc-canvas-wrap{position:relative;height:320px;}
-  .uc-legend{display:flex;gap:1.5rem;margin-top:1.25rem;flex-wrap:wrap;}
+  .uc-canvas-wrap{position:relative;height:420px;}
+  .uc-legend{display:flex;gap:1.5rem;margin-top:1.25rem;flex-wrap:wrap;justify-content:center;}
   .uc-legend-item{display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text-muted);}
   .uc-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
   .uc-table{width:100%;border-collapse:collapse;}
   .uc-table th{text-align:left;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);font-family:'JetBrains Mono',monospace;padding:0.6rem 1rem;border-bottom:1px solid var(--border);}
   .uc-table td{padding:0.85rem 1rem;font-size:0.88rem;color:var(--text-muted);border-bottom:1px solid rgba(44,161,254,0.06);vertical-align:top;}
   .uc-table tr:last-child td{border-bottom:none;}
-  .uc-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--text-dim);white-space:nowrap;}
+  .uc-table td:first-child{font-family:'JetBrains Mono',monospace;font-size:0.75rem;color:var(--text);font-weight:500;white-space:nowrap;}
   .uc-name{color:var(--text);font-weight:500;display:block;margin-bottom:0.2rem;}
   .uc-desc{font-size:0.82rem;color:var(--text-dim);line-height:1.5;}
   .uc-score{font-family:'JetBrains Mono',monospace;font-size:0.82rem;text-align:center;white-space:nowrap;}
@@ -642,26 +642,48 @@ new Chart(radarCtx, {
 
 // ── BUBBLE CHART ──
 const bubbleCtx = document.getElementById('bubbleChart').getContext('2d');
-new Chart(bubbleCtx, {
+const bubbleChart = new Chart(bubbleCtx, {
   type: 'bubble',
   data: {
     datasets: [
-      { label: 'Alta priorità', data: [{ x:2, y:4, r:14, uc:'UC1 — Triage assistenza' },{ x:1, y:3, r:11, uc:'UC3 — Report automatico' }], backgroundColor:'rgba(34,197,94,0.25)', borderColor:'rgba(34,197,94,0.7)', borderWidth:1.5 },
-      { label: 'Media priorità', data: [{ x:4, y:5, r:18, uc:'UC2 — Manutenzione predittiva' },{ x:2, y:3, r:11, uc:'UC4 — Assistente acquisti' },{ x:3, y:4, r:14, uc:'UC5 — Pianificazione tecnici' }], backgroundColor:'rgba(245,158,11,0.2)', borderColor:'rgba(245,158,11,0.6)', borderWidth:1.5 },
-      { label: 'Bassa priorità', data: [{ x:1, y:2, r:9, uc:'UC6 — Documentazione tecnica' }], backgroundColor:'rgba(92,122,150,0.2)', borderColor:'rgba(92,122,150,0.5)', borderWidth:1.5 }
+      { label: 'Alta priorità', data: [{ x:2, y:4, r:22, uc:'UC1', desc:'Triage assistenza' },{ x:1, y:3, r:17, uc:'UC3', desc:'Report automatico' }], backgroundColor:'rgba(34,197,94,0.3)', borderColor:'rgba(34,197,94,0.9)', borderWidth:2 },
+      { label: 'Media priorità', data: [{ x:4, y:5, r:26, uc:'UC2', desc:'Manutenzione predittiva' },{ x:2, y:3, r:17, uc:'UC4', desc:'Assistente acquisti' },{ x:3, y:4, r:22, uc:'UC5', desc:'Pianificazione tecnici' }], backgroundColor:'rgba(245,158,11,0.28)', borderColor:'rgba(245,158,11,0.9)', borderWidth:2 },
+      { label: 'Bassa priorità', data: [{ x:1, y:2, r:14, uc:'UC6', desc:'Documentazione tecnica' }], backgroundColor:'rgba(92,122,150,0.25)', borderColor:'rgba(92,122,150,0.8)', borderWidth:2 }
     ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     scales: {
-      x: { min:0, max:5.5, title:{ display:true, text:'Difficoltà di implementazione →', color:'#5c7a96', font:{ family:'JetBrains Mono', size:10 } }, ticks:{ color:'#5c7a96', font:{ family:'JetBrains Mono', size:10 }, stepSize:1, callback: v => v===1?'Bassa':v===3?'Media':v===5?'Alta':'' }, grid:{ color:'rgba(44,161,254,0.06)' }, border:{ color:'rgba(44,161,254,0.15)' } },
-      y: { min:0, max:6, title:{ display:true, text:'↑ Impatto atteso', color:'#5c7a96', font:{ family:'JetBrains Mono', size:10 } }, ticks:{ color:'#5c7a96', font:{ family:'JetBrains Mono', size:10 }, stepSize:1, callback: v => v===1?'Basso':v===3?'Medio':v===5?'Alto':'' }, grid:{ color:'rgba(44,161,254,0.06)' }, border:{ color:'rgba(44,161,254,0.15)' } }
+      x: { min:0, max:5.5, title:{ display:true, text:'Difficoltà di implementazione →', color:'#8fa3b8', font:{ family:'JetBrains Mono', size:11 } }, ticks:{ color:'#8fa3b8', font:{ family:'JetBrains Mono', size:11 }, stepSize:1, callback: v => v===1?'Bassa':v===3?'Media':v===5?'Alta':'' }, grid:{ color:'rgba(44,161,254,0.08)' }, border:{ color:'rgba(44,161,254,0.2)' } },
+      y: { min:0, max:6, title:{ display:true, text:'↑ Impatto atteso', color:'#8fa3b8', font:{ family:'JetBrains Mono', size:11 } }, ticks:{ color:'#8fa3b8', font:{ family:'JetBrains Mono', size:11 }, stepSize:1, callback: v => v===1?'Basso':v===3?'Medio':v===5?'Alto':'' }, grid:{ color:'rgba(44,161,254,0.08)' }, border:{ color:'rgba(44,161,254,0.2)' } }
     },
     plugins: {
       legend: { display: false },
-      tooltip: { backgroundColor:'#132438', borderColor:'rgba(44,161,254,0.3)', borderWidth:1, titleColor:'#e8edf2', bodyColor:'#8fa3b8', padding:10, callbacks:{ title: items => items[0].raw.uc, label: ctx => [` Impatto: ${ctx.raw.y}/5`,` Difficoltà: ${ctx.raw.x}/5`] } }
+      tooltip: { backgroundColor:'#132438', borderColor:'rgba(44,161,254,0.3)', borderWidth:1, titleColor:'#e8edf2', bodyColor:'#8fa3b8', padding:12, callbacks:{ title: items => `${items[0].raw.uc} — ${items[0].raw.desc}`, label: ctx => [` Impatto: ${ctx.raw.y}/5`,` Difficoltà: ${ctx.raw.x}/5`] } },
+      afterDraw: undefined
     }
-  }
+  },
+  plugins: [{
+    id: 'bubbleLabels',
+    afterDatasetsDraw(chart) {
+      const {ctx, data} = chart;
+      const colors = ['rgba(34,197,94,1)', 'rgba(245,158,11,1)', 'rgba(140,160,180,1)'];
+      data.datasets.forEach((ds, di) => {
+        ds.data.forEach((pt, pi) => {
+          const meta = chart.getDatasetMeta(di).data[pi];
+          if (!meta) return;
+          const {x, y} = meta.getProps(['x','y'], true);
+          ctx.save();
+          ctx.fillStyle = '#ffffff';
+          ctx.font = "bold 11px 'JetBrains Mono', monospace";
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(pt.uc, x, y);
+          ctx.restore();
+        });
+      });
+    }
+  }]
 });
 </script>
 </body>
